@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load staticfiles %}
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="../../static/admin/css/style.css" rel="stylesheet">
+<title>Bienvenido a machform</title>
+</head>
+<body class="preload" >
+    <div id="content" >
+       <div class="bg-login"></div>
+        <header>
+            <div class="header">
+                <div class="emt-logo">
+                    <img src="../../static/admin/images/logo-emtelco.png" alt="">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="line shadow"></div>
+        </header>
+        <div class="container-login text-center">
+           <h1>Bienvenido</h1>
+           <p>Ingresa tus datos</p><br>
+            <form method="post" action="{% url 'login:login' %}" id="loginform" class="form-horizontal" role="form">{% csrf_token %}
+                <input class="form-control" id="login-username" type="text" name="username" value="" placeholder="Ingresar nombre de usuario"><br>
+                <input id="login-password" type="password" class="form-control" name="password" placeholder="Ingresar contraseña"><br>
+                <button type="submit" class="form-control" id="btningresar"><a href="index.html">Iniciar Sesión</a></button>
+                {% if messages %} <br />
+                        {% for message in messages %}
+                            <div class="alert" role="alert">{{ message }}</div>
+                        {% endfor %} 
+                    {% endif %}
+            </form>
+        </div>
+        <footer>
+            <div class="line"></div>
+            <div class="footer">
+                Copyright © 2017 Medellín | Colombia | Gerencia de Ingeniería y Desarrollo Emtelco S.A.S
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

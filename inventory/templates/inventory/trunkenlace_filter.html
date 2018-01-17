@@ -1,0 +1,59 @@
+<html>
+<head>
+	
+</head>
+<body>
+<form method="get">
+    
+<p><label for="id_num_trunke">Número troncal :</label> <input type="text"  name="num_trunke" id="id_num_trunke"></p>
+
+<p><label for="id_num_enlatr">Número de linea :</label> <select name="num_enlatr" id="id_num_enlatr">
+  <option value="" selected="">---------</option>
+
+  <option value="3">018000516464</option>
+
+  <option value="5">01800055555</option>
+
+  <option value="4">045237</option>
+
+  <option value="6">147258</option>
+
+</select></p>
+<p><label for="id_num_dnenla">DNIS :</label> <select name="num_dnenla" id="id_num_dnenla">
+  <option value="" selected="">---------</option>
+
+  <option value="9">412</option>
+
+  <option value="10">456</option>
+
+  <option value="8">956</option>
+
+  <option value="11">2563</option>
+
+</select></p>
+<p><label for="id_num_dnlin">Linea externa :</label> <select name="num_dnlin" id="id_num_dnlin">
+  <option value="" selected="">---------</option>
+
+  <option value="3">123</option>
+
+  <option value="4">236</option>
+
+  <option value="5">741</option>
+
+  <option value="6">7741</option>
+
+  <option value="7">7256</option>
+
+</select></p>
+<p><label for="id_obser">Observación:</label> <input type="text" name="obser" id="id_obser"></p>
+    <button type="submit">Search</button>
+  </form>
+
+  {% for trunk in filter.qs %}
+    <li>{{ trunk.num_trunke }}</li>
+    <li>{{ trunk.num_enlatr }}</li>
+  {% endfor %}
+  <ul>
+  
+  </ul>
+</body></html>

@@ -1,0 +1,206 @@
+<html lang="es">
+    <head>
+        <title>Registrar enlaces</title>
+        <link rel="stylesheet" type="text/css" href="/static/admin/css/style.css">
+        <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="robots" content="NONE,NOARCHIVE">
+        <script src="/static/admin/js/jquery.js" type="text/javascript"></script>
+        <script src="/static/admin/js/bootstrap.min.js"></script>
+    </head>
+
+
+    <body id="container">
+    
+        <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.model-city').hide()
+                
+        });
+        </script> 
+       <div class="bg-home"></div>
+        <header>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="{% url 'inventory:index' %}"><img src="/static/admin/images/logo-emtelco.png" alt=""></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'login:logout' %}">Cerrar Sesión</a></li>
+                    <li><a href="{% url 'inventory:presalidalist' %}">Prefijos de Salida</a></li>
+                    <li><a href="{% url 'inventory:codsalidalist' %}">Còdigos de Salida</a></li>
+                    <li><a class="active" href="/machform/trunkenlacelist/">Troncales</a></li>
+                    {% if user.is_active and user.is_staff and user.is_superuser %}
+                    <li><a  href="{% url 'inventory:usuariolist' %}">Usuarios</a></li>
+                    {%endif%}
+                     <li><a>Bienvenido <strong>{% firstof user.get_short_name user.get_username %}</strong>.</a></li>
+                    
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+            <div class="line shadow"></div>
+        </header>
+
+        <div class="container" id="content-home">
+            <div class="padding">
+            <form method="post">
+                    {% csrf_token %}
+
+                     <br>
+                    <div class="clearfix"></div>    
+                    <div class="padding">            
+                        <div class="form-user">
+                             <div class="form-group  col-md-12">
+                                <div class="col-md-3">
+                                    <label class="control-label">{{form.num_trunke.label}}</label>
+                                </div>
+                                <div class="col-md-7">
+                                     {{form.num_trunke}}
+                                     <p style="color:red">{{form.num_trunke.errors}}</p>
+                                </div>
+                                <div class="col-md-1">
+                                    <a id="trunk" class="addlink" ><span class="glyphicon glyphicon-plus"></a>
+                                    <a href="{% url 'inventory:trunkelist' %}" class="changelink" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                </div>
+                             </div>
+                             <div class="form-group  col-md-12">
+                                <div class="col-md-3">
+                                    <label class="control-label">{{form.num_enlatr.label}}</label>
+                                </div>
+                                <div class="form-group col-md-7">
+                                      {{form.num_enlatr}}
+                                      <p style="color:red">{{form.num_enlatr.errors}}</p>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <a id="enla" class="addlink" ><span class="glyphicon glyphicon-plus"></a>
+                                    <a href="{% url 'inventory:linealist' %}" class="changelink" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                </div>
+                             </div>
+                             <hr>
+                             <div class="clearfix"></div>
+                             <div class="margin"></div>
+                            <div class="form-group  col-md-12">
+                                <div class="col-md-3">
+                                     <label class="control-label">{{form.num_dnenla.label}}</label>
+                                </div>
+                                <div class="col-md-7">
+                                      {{form.num_dnenla}}
+                                      <p style="color:red">{{form.num_dnenla.errors}}</p>
+                                </div>
+                                <div class="col-md-1">
+                                    <a id="dnis" class="addlink" ><span class="glyphicon glyphicon-plus"></a>
+                                    <a href="{% url 'inventory:dnislist' %}" class="changelink" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                </div>
+                             </div>
+                             <div class="form-group  col-md-12">
+                                <div class="col-md-3">
+                                     <label class="control-label">{{form.num_dnlin.label}}</label>
+                                </div>
+                                <div class="col-md-7">
+                                     {{form.num_dnlin}}
+                                     <p style="color:red">{{form.num_dnlin.errors}}</p>
+                                </div>
+                                 <div class="col-md-1">
+                                    <a id="liext"  class="addlink" ><span class="glyphicon glyphicon-plus"></a>
+                                    <a href="{% url 'inventory:linextlist' %}" class="changelink" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                </div>
+                             </div>
+                             <hr>
+                             <div class="clearfix"></div>
+                             <div class="margin"></div>
+                             <div class="form-group col-md-12">
+                                <div class="col-md-3">
+                                     <label class="control-label">{{form.obser.label}}</label>
+                                </div>
+                                <div class="col-md-9">
+                                     {{form.obser}}
+                                     <p style="color:red">{{form.obser.errors}}</p>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                             </div>
+                             
+                             
+                             <div class="clearfix"></div>
+                             
+                             <div class="col-md-4"></div>
+                            <div class="form-group  col-md-12">
+                                <div class="col-md-6">
+                                     <a class="btn btn-back" href="{% url 'inventory:trunkenlacelist' %}">Atras</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="form-control" type="submit" value="Agregar">Añadir</button>
+                                </div>
+                            </div>
+                       </div>
+                </div>
+
+
+
+                </form>
+                </div>
+        </div>
+
+        <footer>
+            <div class="line"></div>
+            <div class="footer">
+                Copyright © 2017 Medellín | Colombia | Gerencia de Ingeniería y Desarrollo Emtelco S.A.S
+            </div>
+        </footer>
+    </body>
+
+  <script type="text/javascript">
+
+  if (localStorage["idRegistroT"]) {
+      jQuery('#id_num_trunke').val(localStorage["idRegistroT"]);
+    }
+
+  $("#trunk").click(function(){
+    window.open("{% url 'inventory:addtroncal' %}",  "ventana1", "width=1000,height=1000")
+
+  });
+
+</script>
+<script type="text/javascript">
+  if (localStorage["idRegistroE"]) {
+      jQuery('#id_num_enlatr').val(localStorage["idRegistroE"]);
+    }
+  
+  $("#enla").click(function(){
+    window.open("{% url 'inventory:addlinea' %} ",  "ventana1", "width=1000,height=1000")
+
+  });
+</script>
+<script type="text/javascript">
+  if (localStorage["idRegistroD"]) {
+      jQuery('#id_num_dnenla').val(localStorage["idRegistroD"]);
+    }
+  
+  $("#dnis").click(function(){
+    window.open("{% url 'inventory:adddnis' %}",  "ventana1", "width=1000,height=1000")
+
+  });
+</script>
+<script type="text/javascript">
+  if (localStorage["idRegistroL"]) {
+      jQuery('#id_num_dnlin').val(localStorage["idRegistroL"]);
+    }
+  
+  $("#liext").click(function(){
+    window.open("{% url 'inventory:addliext' %}",  "ventana1", "width=1000,height=1000")
+
+  });
+</script>
+</html>

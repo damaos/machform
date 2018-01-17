@@ -1,0 +1,112 @@
+<html lang="es">
+    <head>
+        <title>Detalle</title>
+        <link rel="stylesheet" type="text/css" href="/static/admin/css/style.css">
+        <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="robots" content="NONE,NOARCHIVE">
+        <script src="/static/admin/js/jquery.js" type="text/javascript"></script>
+        <script src="/static/admin/js/bootstrap.min.js"></script>
+    </head>
+
+    <body id="container">
+    
+        <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.model-city').hide()
+                 
+        });
+        </script> 
+       <div class="bg-home"></div>
+        <header>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="{% url 'inventory:index' %}"><img src="/static/admin/images/logo-emtelco.png" alt=""></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'login:logout' %}">Cerrar Sesión</a></li>
+                    <li><a href="{% url 'inventory:presalidalist' %}">Prefijos de Salida</a></li>
+                    <li><a href="{% url 'inventory:codsalidalist' %}">Còdigos de Salida</a></li>
+                    <li><a class="active" href="/machform/trunkenlacelist/">Troncales</a></li>
+                    {% if user.is_active and user.is_staff and user.is_superuser %}
+                    <li><a  href="{% url 'inventory:usuariolist' %}">Usuarios</a></li>
+                    {%endif%}
+                     <li><a>Bienvenido <strong>{% firstof user.get_short_name user.get_username %}</strong>.</a></li>
+                    
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+            <div class="line shadow"></div>
+        </header>
+
+        <div class="container-general" id="content-main">
+        <div class="col-md-1">
+            <a href="{% url 'inventory:trunkenlacelist' %}"> <input class="search-btn" type="submit" value="Atras" /></a>
+        </div>
+        <div class="clearfix"></div>
+            <div class="table-responsive">
+                    <table align="center" class="table table-striped">
+                        <thead>
+                                
+                        </thead>
+                        <tbody>
+                                
+                                <tr class="alt">
+                                    <td>
+                                        <strong>Lineas externas asociados al DNIS</strong>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                {% for trunk in enlalis %}
+                                <tr>
+
+                                    <td>
+                                        <strong>Linea externa</strong>  
+                                    </td>
+                                    <td>
+                                        {{ trunk.num_dnlin.num_linext }}
+                                    </td>
+                                </tr>
+                                
+                                
+                                {% endfor %}
+                            </tbody>
+
+                    </table>
+                    {%if page_obj.has_previous%}
+                        <a href="?page={{page_obj.previous_page_number}}"><input class="search-btn" type="submit" value="Anterior" /></a>
+                        
+                        {%endif%}
+                    
+
+                   
+                        {%if page_obj.has_next%}
+                        
+                        <a href="?page={{page_obj.next_page_number}}"><input class="search-btn" type="submit" value="Siguiente" /></a>
+                        {%endif%}
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="line"></div>
+            <div class="footer">
+                Copyright © 2017 Medellín | Colombia | Gerencia de Ingeniería y Desarrollo Emtelco S.A.S
+            </div>
+        </footer>
+    </body>
+</html>

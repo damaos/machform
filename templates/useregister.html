@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load staticfiles %}
+    <head>
+    <title>Registrar enlaces</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+    <link rel="SHORTCUT ICON" href="/static/images/favicon.ico">  
+    <meta name="robots" content="NONE,NOARCHIVE">
+    <!-- <meta http-equiv="refresh" content="5"> -->
+    </head>
+    <body class=" dashboard" data-admin-utc-offset="-18000">
+    
+
+        <div id="container"  >
+        <div id="header">
+        <div id="branding">
+        <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <div class="col-md-4 column">
+    <span class="header-text">
+    <a href="/machform/index">Machform</a> 
+    </span>
+    <br clear="all">
+    </div>
+        <script type="text/javascript">
+$( document ).ready(function() {
+    $('.model-city').hide()
+        
+});
+</script> 
+        </div>
+        <div id="user-tools">
+                Bienvenido/a,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.                
+                <a href="{% url 'login:logout' %}">Terminar sesión</a>
+        </div>
+    </div>
+
+		<div id="content" >
+		
+	
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="container">
+
+                <form method="post">
+				    {% csrf_token %}       
+                        {{form.as_p}}
+
+                        <div class="form-group  col-md-2">
+                            <input type="submit" value="Agregar" >
+                        </div>
+
+				</form>
+
+				
+
+			</div>
+		</div>
+	
+	</body>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.control-label {
+    margin-right: 15px;
+}
+.right {
+    float: right;
+}
+.form-group.col-md-4.select-height {
+    height: 290px;
+}
+.left{
+    float: left;
+}
+.label {
+    width: 28%;
+    float: left;
+    text-align: left;
+    padding-left: 20px;
+}
+.select{
+    width: 45%;
+     float: left;
+}
+.link{
+    width: 15%;
+     float: left;
+}
+select {
+    width: 100%;
+    background: white;
+    border: none;
+    box-shadow: 0px 0 5px #0000004d;
+    padding: 5px;
+    margin: 0px 0px 10px;
+    text-align: left;
+    float: left;
+}
+
+a.search-btn:hover, .btn-login:hover{
+    background: #609ab6;
+}
+a.search-btn, .btn-login{
+    background: #79aec8;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn.btn-login {
+
+    margin: 20px;
+
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+    background: #ffffff
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+#content{
+	text-align: center;
+	width: 50%;
+	margin: auto;
+	
+}
+.preload{
+	background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpNTAOeOz3M2KyNcj2NAT9g40jOnKrHERCXF1QgTeBbiSEOi3Ew);
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+
+</html>
