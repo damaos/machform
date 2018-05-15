@@ -27,7 +27,7 @@
             <form method="post" action="{% url 'login:login' %}" id="loginform" class="form-horizontal" role="form">{% csrf_token %}
                 <input class="form-control" id="login-username" type="text" name="username" value="" placeholder="Ingresar nombre de usuario"><br>
                 <input id="login-password" type="password" class="form-control" name="password" placeholder="Ingresar contraseña"><br>
-                <button type="submit" class="form-control" id="btningresar"><a href="index.html">Iniciar Sesión</a></button>
+                <button type="submit" class="form-control" id="btningresar"><a href="{%url 'inventory:trunkenlacelist' %}">Iniciar Sesión</a></button>
                 {% if messages %} <br />
                         {% for message in messages %}
                             <div class="alert" role="alert">{{ message }}</div>
@@ -38,7 +38,7 @@
         <footer>
             <div class="line"></div>
             <div class="footer">
-                Copyright © 2017 Medellín | Colombia | Gerencia de Ingeniería y Desarrollo Emtelco S.A.S
+                Copyright © 2018 Medellín | Colombia | Gerencia de Ingeniería y Desarrollo Emtelco S.A.S
             </div>
         </footer>
     </div>

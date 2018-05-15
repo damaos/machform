@@ -39,7 +39,7 @@ class Viewlogin(View):
                     try:
                         login(request, users)
                         request.session.set_expiry(settings.SESSION_TIMEOUT)
-                        return HttpResponseRedirect(reverse('inventory:index'))   
+                        return HttpResponseRedirect(reverse('inventory:trunkenlacelist'))   
                         
                     except User.DoesNotExist:
                         user = None

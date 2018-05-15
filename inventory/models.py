@@ -49,7 +49,7 @@ class seat(BaseModel):
     	verbose_name = 'Sede'
 #Contrato
 class contract(BaseModel):
-    num_contract = models.IntegerField('Número contrato ', unique=True )
+    num_contract = models.CharField('Número contrato ', unique=True, max_length=255 )
     name_contract = models.CharField('Nombre contrato ', max_length=50)
     obser_contract = models.TextField('Observación ', max_length=100,blank=True)
     
@@ -113,7 +113,7 @@ class preexit(BaseModel):
 
 #Linea externa
 class linext(BaseModel):
-    num_linext = models.BigIntegerField('Linea externa ', unique=True)
+    num_linext = models.CharField('Linea externa ', unique=True, max_length=255)
     num_prefx = models.ForeignKey(contract, verbose_name='Número de contrato ')  #Numero contrato
     nom_clie = models.ForeignKey(client, verbose_name='Cliente ')
     obser_linext= models.TextField('Observación ', max_length=100, blank=True)
@@ -129,9 +129,9 @@ class linext(BaseModel):
 
 #DNIS
 class dnis(BaseModel):
-    num_dnis = models.BigIntegerField('DNIS ', unique=True)
+    num_dnis = models.CharField('DNIS ', unique=True, max_length=255)
     nom_clie = models.ForeignKey(client, verbose_name='Cliente ')
-    num_des = models.IntegerField('Número de desborde ', blank=True, null=True) #número de desborde
+    num_des = models.CharField('Número de desborde ', blank=True, null=True, max_length=255) #número de desborde
     obser_dnis = models.TextField('Observación ', max_length=100, blank=True)
     
 
@@ -153,7 +153,6 @@ class enlace(BaseModel):
     )
     enla_num = models.CharField('Número de linea ', max_length=50,  unique=True)
     enla_pro = models.CharField('Propietario linea', choices=PROPIETARIO, max_length=50)
-    enla_proex = models.CharField('Propietario linea externa', choices=PROPIETARIO, max_length=50)
     enla_clien = models.ForeignKey(client, verbose_name='Cliente ' ) #Clientes
     enla_sed = models.ForeignKey(seat, verbose_name='Sede ')  #Sede
     enla_plat = models.ForeignKey(plataform, verbose_name='Plataforma ' ) #plataforma
@@ -172,7 +171,7 @@ class enlace(BaseModel):
 
 #Troncal
 class trunk(BaseModel):
-    num_trunk = models.IntegerField('Número troncal ', unique=True)
+    num_trunk = models.CharField('Número troncal ', unique=True, max_length=250)
     type_trun = models.ForeignKey(typetrunk, verbose_name='Tipo de troncal ')
     #trunk_enla = models.ForeignKey(enlace, verbose_name='Enlace ' ) 
     obser_contract = models.TextField('Observación ', max_length=100, blank=True)

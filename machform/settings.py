@@ -105,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'machform',
         'USER': 'root',
-        'PASSWORD': 'root'    }
+        'PASSWORD': 'emtelco2018*'    }
 }
 
 
