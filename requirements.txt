@@ -1,7 +1,7 @@
 certifi==2017.11.5
 chardet==3.0.4
 diff-match-patch==20121119
-Django==1.11.5
+Django==1.11.23
 django-cors-headers==2.1.0
 django-debug-toolbar==1.9.1
 django-decorator-include==1.3
