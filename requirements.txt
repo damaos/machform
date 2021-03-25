@@ -22,7 +22,7 @@ openpyxl==2.4.9
 pkg-resources==0.0.0
 PyJWT==1.5.3
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 sqlparse==0.2.4
 tablib==0.12.1
